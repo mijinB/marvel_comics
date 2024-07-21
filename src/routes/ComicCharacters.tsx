@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { listComicCharacters } from "../api";
 import { CharactersResponse } from "../types";
@@ -23,23 +23,44 @@ export default function ComicCharacters() {
                     <Text>No Characters Info</Text>
                 ) : (
                     characters.map((character) => (
-                        <VStack>
-                            <Image
-                                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                                alt="character img"
-                                w={150}
-                                h={150}
-                                borderRadius={"50%"}
-                            />
-                            <VStack>
-                                <Text fontSize={"xl"} fontWeight={600}>
-                                    {character.name}
-                                </Text>
-                                <Text color={"#9e9e9e"}>
-                                    {character?.description !== "" ? character?.description : "No description"}
-                                </Text>
+                        <Link to={`/characters/${character.id}`}>
+                            <VStack
+                                position={"relative"}
+                                _hover={{
+                                    "& img": {
+                                        opacity: 0.3,
+                                    },
+                                    "&::after": {
+                                        display: "block",
+                                        position: "absolute",
+                                        zIndex: 1,
+                                        top: "50%",
+                                        left: "50%",
+                                        transform: "translate(-50%, -150%)",
+                                        width: "85%",
+                                        fontSize: "20px",
+                                        textAlign: "center",
+                                        content: `"About 👉"`,
+                                    },
+                                }}
+                            >
+                                <Image
+                                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                                    alt="character img"
+                                    w={150}
+                                    h={150}
+                                    borderRadius={"50%"}
+                                />
+                                <VStack>
+                                    <Text fontSize={"xl"} fontWeight={600}>
+                                        {character.name}
+                                    </Text>
+                                    <Text color={"#9e9e9e"}>
+                                        {character?.description !== "" ? character?.description : "No description"}
+                                    </Text>
+                                </VStack>
                             </VStack>
-                        </VStack>
+                        </Link>
                     ))
                 )}
             </VStack>

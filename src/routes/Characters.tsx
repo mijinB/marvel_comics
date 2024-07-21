@@ -19,7 +19,7 @@ export default function Characters() {
             </Text>
             <Grid templateColumns={"repeat(5, 1fr)"} columnGap={5} rowGap={10} mb={10} padding={"0 15%"}>
                 {dataList?.map((item) => (
-                    <Link to={`/comics/${item.id}`} key={item.id}>
+                    <Link to={`/characters/${item.id}`} key={item.id}>
                         <Box
                             position={"relative"}
                             _hover={{

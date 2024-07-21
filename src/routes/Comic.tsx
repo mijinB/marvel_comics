@@ -30,6 +30,7 @@ export default function Comic() {
                         src={`${detailData?.images[0].path}.${detailData?.images[0].extension}`}
                         alt="comic img"
                         w={300}
+                        borderRadius={15}
                     />
                     <VStack alignItems={"flex-start"} gap={10}>
                         <Text fontSize={"md"}>

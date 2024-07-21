@@ -4,7 +4,7 @@ import Header from "./Header";
 
 export default function Root() {
     return (
-        <Box h={"100%"} bg={"#202020"} color={"#fff"}>
+        <Box minH={"100vh"} bg={"#202020"} color={"#fff"}>
             <Header />
             <Outlet />
         </Box>

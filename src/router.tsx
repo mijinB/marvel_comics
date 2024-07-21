@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./components/Root";
 import NotFound from "./routes/NotFound";
-import Home from "./routes/Home";
+import Comics from "./routes/Comics";
+import Comic from "./routes/Comic";
 
 const router = createBrowserRouter([
     {
@@ -11,7 +12,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <Home />,
+                element: <Comics />,
+            },
+            {
+                path: "comics/:comicId",
+                element: <Comic />,
             },
         ],
     },

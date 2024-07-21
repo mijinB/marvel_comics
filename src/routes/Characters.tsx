@@ -1,27 +1,21 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { Box, Button, Grid, Image, Text, VStack } from "@chakra-ui/react";
-import { FaUserFriends } from "react-icons/fa";
-import { listComics } from "../api";
-import { ComicsResponse } from "../types";
+import { Box, Grid, Image, Text, VStack } from "@chakra-ui/react";
+import { listCharacters } from "../api";
+import { CharactersResponse } from "../types";
+import { Link } from "react-router-dom";
 
-export default function Comics() {
-    const navigate = useNavigate();
-    const { isLoading, data } = useQuery<ComicsResponse>({
-        queryKey: ["comics"],
-        queryFn: listComics,
+export default function Characters() {
+    const { isLoading, data } = useQuery<CharactersResponse>({
+        queryKey: ["characters"],
+        queryFn: listCharacters,
     });
     const dataList = data?.data.results;
-
-    const showComicCharacters = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        navigate("/characters");
-    };
+    console.log(dataList);
 
     return (
         <VStack>
             <Text mt={8} mb={5} fontSize={"3xl"} fontWeight={900}>
-                Comics
+                Characters
             </Text>
             <Grid templateColumns={"repeat(5, 1fr)"} columnGap={5} rowGap={10} mb={10} padding={"0 15%"}>
                 {dataList?.map((item) => (
@@ -42,7 +36,7 @@ export default function Comics() {
                                     width: "85%",
                                     fontSize: "20px",
                                     textAlign: "center",
-                                    content: `"Go to Details Page 👉"`,
+                                    content: `"About this character 👉"`,
                                 },
                             }}
                         >
@@ -55,24 +49,8 @@ export default function Comics() {
                                 backgroundPosition={"right"}
                                 objectFit={"cover"}
                             />
-                            <Button
-                                onClick={showComicCharacters}
-                                position={"absolute"}
-                                top={3}
-                                right={3}
-                                zIndex={2}
-                                w={"50px"}
-                                h={"50px"}
-                                borderRadius={"50%"}
-                                backgroundColor={"rgba(57, 57, 57, 0.7)"}
-                                _hover={{
-                                    backgroundColor: "rgba(145, 145, 145, 0.7)",
-                                }}
-                            >
-                                <FaUserFriends color={"#fff"} />
-                            </Button>
                             <Text marginTop={3} fontSize={"md"} fontWeight={600}>
-                                {item.title}
+                                {item.name}
                             </Text>
                         </Box>
                     </Link>

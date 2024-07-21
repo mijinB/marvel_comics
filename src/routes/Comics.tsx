@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Box, Button, Grid, Image, Text, VStack } from "@chakra-ui/react";
 import { FaUserFriends } from "react-icons/fa";
 import { listComics } from "../api";
-import { ComicsResponse } from "../types";
+import { ComicsResponse, IShowComicCharacters } from "../types";
 
 export default function Comics() {
     const navigate = useNavigate();
@@ -13,9 +13,9 @@ export default function Comics() {
     });
     const dataList = data?.data.results;
 
-    const showComicCharacters = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const showComicCharacters = ({ e, id }: IShowComicCharacters) => {
         e.preventDefault();
-        navigate("/characters");
+        navigate(`/comics/${id}/characters`);
     };
 
     return (
@@ -23,7 +23,7 @@ export default function Comics() {
             <Text mt={8} mb={5} fontSize={"3xl"} fontWeight={900}>
                 Comics
             </Text>
-            <Grid templateColumns={"repeat(5, 1fr)"} columnGap={5} rowGap={10} mb={10} padding={"0 15%"}>
+            <Grid templateColumns={"repeat(5, 1fr)"} columnGap={5} rowGap={10} w={"70%"} mb={10}>
                 {dataList?.map((item) => (
                     <Link to={`/comics/${item.id}`} key={item.id}>
                         <Box
@@ -56,7 +56,7 @@ export default function Comics() {
                                 objectFit={"cover"}
                             />
                             <Button
-                                onClick={showComicCharacters}
+                                onClick={(e) => showComicCharacters({ e: e, id: `${item.id}` })}
                                 position={"absolute"}
                                 top={3}
                                 right={3}

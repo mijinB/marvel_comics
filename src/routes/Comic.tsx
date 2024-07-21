@@ -1,17 +1,23 @@
-import { ComicDetailResponse } from "../types";
+import { ComicDetailResponse, IShowComicCharacters } from "../types";
 import { comicDetail } from "../api";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import { Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Box, Button, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { FaUserFriends } from "react-icons/fa";
 
 export default function Comic() {
     const { comicId } = useParams();
+    const navigate = useNavigate();
     const { isLoading, data } = useQuery<ComicDetailResponse>({
         queryKey: ["comicId", comicId],
         queryFn: comicDetail,
     });
     const detailData = data?.data.results[0];
-    console.log(detailData);
+
+    const showComicCharacters = ({ e, id }: IShowComicCharacters) => {
+        e.preventDefault();
+        navigate(`/comics/${id}/characters`);
+    };
 
     return (
         <Box h={"100%"} padding={"50px 0"}>
@@ -34,6 +40,18 @@ export default function Comic() {
                                 <Text key={index} fontSize={"sm"}>{`${creator.role} : ${creator.name}`}</Text>
                             ))}
                         </VStack>
+                        <Button
+                            onClick={(e) => showComicCharacters({ e: e, id: `${comicId}` })}
+                            w={"50px"}
+                            h={"50px"}
+                            borderRadius={"50%"}
+                            backgroundColor={"rgba(57, 57, 57, 0.7)"}
+                            _hover={{
+                                backgroundColor: "rgba(145, 145, 145, 0.7)",
+                            }}
+                        >
+                            <FaUserFriends color={"#fff"} />
+                        </Button>
                     </VStack>
                 </HStack>
             </VStack>

@@ -360,3 +360,8 @@ export interface EventDetailResponse {
     etag: string;
     data: EventDetailData;
 }
+
+export interface IShowComicCharacters {
+    e: React.MouseEvent<HTMLButtonElement>;
+    id: string;
+}

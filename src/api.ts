@@ -9,7 +9,7 @@ const currentTime = new Date().getTime();
 const MD5_KEY = md5(currentTime + SECRET_KEY + API_KEY);
 const PARAMS = `?apikey=${API_KEY}&ts=${currentTime}&hash=${MD5_KEY}`;
 
-export const listComics = (): Promise<ComicsResponse> => fetch(`${API_URL}/comics`).then((r) => r.json());
+export const listComics = (): Promise<ComicsResponse> => fetch(`${API_URL}/comics?offset=2`).then((r) => r.json());
 
 export const listCharacters = (): Promise<CharactersResponse> => fetch(`${API_URL}/characters`).then((r) => r.json());
 

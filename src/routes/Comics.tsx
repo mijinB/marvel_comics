@@ -44,10 +44,10 @@ export default function Comics() {
                             backgroundPosition={"right"}
                             objectFit={"cover"}
                         />
+                        <Text marginTop={3} fontSize={"md"} fontWeight={600}>
+                            {item.title}
+                        </Text>
                     </Box>
-                    <Text marginTop={3} fontSize={"md"} fontWeight={600}>
-                        {item.title}
-                    </Text>
                 </Link>
             ))}
         </Grid>

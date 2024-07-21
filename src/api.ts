@@ -1,6 +1,5 @@
 import { QueryFunctionContext } from "@tanstack/react-query";
 import { CharacterDetailResponse, CharactersResponse, ComicDetailResponse, ComicsResponse } from "./types";
-import md5 from "md5";
 
 const API_URL = "https://marvel-proxy.nomadcoders.workers.dev/v1/public";
 

@@ -6,5 +6,5 @@
 - <A href="https://www.youtube.com/@nomadcoders"> 🔗 Youtube </A><br><br>
 
 ✍️Use<br>
-&nbsp;&nbsp;⇒ FrontEnd / React & Chakra UI<br>
-&nbsp;&nbsp;⇒ BackEnd / Python & Django
+&nbsp;&nbsp;⇒ <b>FrontEnd</b> / React & Chakra UI<br>
+&nbsp;&nbsp;⇒ <b>BackEnd</b> / Python & Django

@@ -7,4 +7,4 @@
 
 ✍️Use<br>
 &nbsp;&nbsp;⇒ <b>FrontEnd</b> / React & Chakra UI<br>
-&nbsp;&nbsp;⇒ <b>BackEnd</b> / Python & Django
+&nbsp;&nbsp;⇒ <b>BackEnd</b> / Python & Django (이 프로젝트에선 사용x)
